@@ -1,0 +1,21 @@
+from flask import Flask, render_template, request, redirect, url_for
+from models import get_projects, get_blog_posts
+
+app = Flask(_name_)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/projects")
+def projects():
+    projects = get_projects()
+    return render_template("projects.html", projects=projects)
+
+@app.route("/blog")
+def blog():
+    blog_posts = get_blog_posts()
+    return render_template("blog.html", blog_posts=blog_posts)
+
+if _name_ == "_main_":
+    app.run(debug=True)
